@@ -8,7 +8,7 @@
 
 1.  Clone a repository ลงมาที่เครื่องของคุณ:
     ```bash
-    git clone [https://github.com/bbthecat/Team-Info-and-Task-assignment.git]
+    git clone https://github.com/bbthecat/Team-Info-and-Task-assignment.git
     ```
 2.  เข้าไปที่โฟลเดอร์ของโปรเจกต์:
     ```bash

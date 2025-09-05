@@ -6,16 +6,16 @@ def run_cli():
     มีลูปหลักสำหรับรอรับคำสั่งจากผู้ใช้และประมวลผล
     """
 
-    # 1. โครงสร้างข้อมูลสำหรับเก็บข้อมูลทีมตามที่ Planner กำหนด
+    # 1. โหลดข้อมูลสำหรับเก็บข้อมูลทีมตามที่ Planner กำหนด
     team_data = {
-        'Planner': 'บี',
-        'Coder': 'เจมส์',
-        'Debugger': 'โอเล่'
+        "Planner": "บี",
+        "Coder": "เจมส์",
+        "Debugger": "โอเล่"
     }
 
     # 2. แสดงข้อความต้อนรับเมื่อโปรแกรมเริ่มทำงาน
     print("--- Welcome to Team Info CLI ---")
-    print("Available commands: [view, quit]")
+    print("Available commands: [view, add, remove, quit]")
 
     # 3. ลูปหลักของโปรแกรม (ทำงานไปเรื่อยๆ จนกว่าจะสั่ง break)
     while True:
@@ -28,6 +28,24 @@ def run_cli():
             for role, name in team_data.items():
                 print(f"- {role}: {name}")
         
+        elif command == 'add':
+            role = input("Enter role : ").capitalize()
+            name = input("Enter name : ")
+            team_data[role]=name
+            print(f"Add {role}: {name}")
+
+        elif command == 'remove':
+            print("\nTeam Members:")
+            # วนลูปเพื่อแสดงข้อมูลสมาชิกทุกคนในทีม
+            for role, name in team_data.items():
+                print(f"- {role}")
+            role = input("\nEnter role to remove: ").capitalize()
+            if role in team_data:
+                removed_name = team_data.pop(role)
+                print(f"Removed {role}: {removed_name}")
+            else:
+                print(f"Role '{role}' not found in team.")
+
         elif command == 'quit':
             print("--- Thank you for using Team Info CLI! ---")
             break  # ออกจาก while loop และจบการทำงานของโปรแกรม

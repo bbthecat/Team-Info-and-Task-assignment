@@ -25,11 +25,7 @@ def run_cli():
     """
 
     # 1. โหลดข้อมูลสำหรับเก็บข้อมูลทีมตามที่ Planner กำหนด
-    team_data = {
-        'Planner': 'บี',
-        'Coder': 'เจมส์',
-        'Debugger': 'โอเล่'
-    }
+    team_data = load_team()
 
     # 2. แสดงข้อความต้อนรับเมื่อโปรแกรมเริ่มทำงาน
     print("--- Welcome to Team Info CLI ---")

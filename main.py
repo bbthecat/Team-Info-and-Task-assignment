@@ -1,4 +1,22 @@
 # src/main.py
+import json
+import os
+
+def load_team():
+    """โหลดข้อมูลทีมจาก team.json ถ้าไม่มีไฟล์ให้คืนค่า dict ว่าง"""
+    if os.path.exists("team.json"):
+        with open("team.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {
+        'Planner': 'บี',
+        'Coder': 'เจมส์',
+        'Debugger': 'โอเล่'
+    }
+
+def save_team(team_data):
+    """บันทึกข้อมูลทีมลงไฟล์ team.json"""
+    with open("team.json", "w", encoding="utf-8") as f:
+        json.dump(team_data, f, ensure_ascii=False, indent=4)
 
 def run_cli():
     """
@@ -6,16 +24,12 @@ def run_cli():
     มีลูปหลักสำหรับรอรับคำสั่งจากผู้ใช้และประมวลผล
     """
 
-    # 1. โครงสร้างข้อมูลสำหรับเก็บข้อมูลทีมตามที่ Planner กำหนด
-    team_data = {
-        'Planner': 'บี',
-        'Coder': 'เจมส์',
-        'Debugger': 'โอเล่'
-    }
+    # 1. โหลดข้อมูลสำหรับเก็บข้อมูลทีมตามที่ Planner กำหนด
+    team_data = load_team()
 
     # 2. แสดงข้อความต้อนรับเมื่อโปรแกรมเริ่มทำงาน
     print("--- Welcome to Team Info CLI ---")
-    print("Available commands: [view, quit]")
+    print("Available commands: [view, add, quit]")
 
     # 3. ลูปหลักของโปรแกรม (ทำงานไปเรื่อยๆ จนกว่าจะสั่ง break)
     while True:
@@ -28,6 +42,23 @@ def run_cli():
             for role, name in team_data.items():
                 print(f"- {role}: {name}")
         
+        elif command == 'add':
+            role = input("Enter role : ")
+            name = input("Enter name : ")
+            team_data[role]=name
+
+        elif command == 'remove':
+            role = input("Enter role to remove: ")
+            if role in team_data:
+                removed_name = team_data.pop(role)
+                print(f"Removed {role}: {removed_name}")
+            else:
+                print(f"Role '{role}' not found in team.")
+
+        elif command == 'save':
+            save_team(team_data)
+            print("Team data saved to team.json")
+
         elif command == 'quit':
             print("--- Thank you for using Team Info CLI! ---")
             break  # ออกจาก while loop และจบการทำงานของโปรแกรม

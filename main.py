@@ -15,7 +15,7 @@ def run_cli():
 
     # 2. แสดงข้อความต้อนรับเมื่อโปรแกรมเริ่มทำงาน
     print("--- Welcome to Team Info CLI ---")
-    print("Available commands: [view, add, quit]")
+    print("Available commands: [view, add, remove, quit]")
 
     # 3. ลูปหลักของโปรแกรม (ทำงานไปเรื่อยๆ จนกว่าจะสั่ง break)
     while True:

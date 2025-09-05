@@ -29,12 +29,17 @@ def run_cli():
                 print(f"- {role}: {name}")
         
         elif command == 'add':
-            role = input("Enter role : ")
+            role = input("Enter role : ").capitalize()
             name = input("Enter name : ")
             team_data[role]=name
+            print(f"Add {role}: {name}")
 
         elif command == 'remove':
-            role = input("Enter role to remove: ")
+            print("\nTeam Members:")
+            # วนลูปเพื่อแสดงข้อมูลสมาชิกทุกคนในทีม
+            for role, name in team_data.items():
+                print(f"- {role}")
+            role = input("\nEnter role to remove: ").capitalize()
             if role in team_data:
                 removed_name = team_data.pop(role)
                 print(f"Removed {role}: {removed_name}")

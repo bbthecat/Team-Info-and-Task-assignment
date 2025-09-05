@@ -1,4 +1,22 @@
 # src/main.py
+import json
+import os
+
+def load_team():
+    """โหลดข้อมูลทีมจาก team.json ถ้าไม่มีไฟล์ให้คืนค่า dict ว่าง"""
+    if os.path.exists("team.json"):
+        with open("team.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {
+        'Planner': 'บี',
+        'Coder': 'เจมส์',
+        'Debugger': 'โอเล่'
+    }
+
+def save_team(team_data):
+    """บันทึกข้อมูลทีมลงไฟล์ team.json"""
+    with open("team.json", "w", encoding="utf-8") as f:
+        json.dump(team_data, f, ensure_ascii=False, indent=4)
 
 def run_cli():
     """
@@ -45,6 +63,10 @@ def run_cli():
                 print(f"Removed {role}: {removed_name}")
             else:
                 print(f"Role '{role}' not found in team.")
+
+        elif command == 'save':
+            save_team(team_data)
+            print("Team data saved to team.json")
 
         elif command == 'quit':
             print("--- Thank you for using Team Info CLI! ---")

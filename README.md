@@ -58,6 +58,6 @@
   <summary>คลิกเพื่อดู Sprint ที่ผ่านมา</summary>
     - **Sprint1 / Week 1** --- https://colab.research.google.com/drive/1lYKohn3Qxv-M3jVvpBQK3So5V5FLYqqp?usp=sharing <br>
     - **Sprint2 / Week 2** --- https://colab.research.google.com/drive/1CeILnUVqAzTSNgHYBrSbbdL1d0-9RtbE?usp=sharing <br>
-    - **Sprint2 / Week 3** --- https://colab.research.google.com/drive/1YzWTm_wB6IIQR52D7-emCozVJiwA0Ai4?usp=sharing
+    - **Sprint3 / Week 3** --- https://colab.research.google.com/drive/1YzWTm_wB6IIQR52D7-emCozVJiwA0Ai4?usp=sharing
 
   </details>

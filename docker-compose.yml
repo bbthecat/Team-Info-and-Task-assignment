@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   web:
     build: .
@@ -7,8 +6,6 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # Mount data directory เพื่อให้ข้อมูล JSON ถูกบันทึกถาวรบนเครื่อง host
       - ./data:/app/data
     env_file:
-      # โหลด environment variables จากไฟล์ .env
       - .env

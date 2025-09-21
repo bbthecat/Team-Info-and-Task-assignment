@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Team Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Team Task Manager</h1>
+            <p>A simple tool for managing your team and their assignments, powered by AI.</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>🤖 AI Task Generator</h2>
+                <div class="form-group">
+                    <label for="ai-task-input">Enter a high-level task:</label>
+                    <input type="text" id="ai-task-input" placeholder="e.g., Develop a new user authentication system">
+                </div>
+                <button id="generate-tasks-btn">Generate Sub-tasks</button>
+                <div id="ai-spinner" class="spinner" style="display: none;"></div>
+                <div id="ai-results">
+                    </div>
+            </section>
+
+            <section class="card-container">
+                <div class="card">
+                    <h2>👥 Add New Member</h2>
+                    <div class="form-group">
+                        <label for="member-name">Name:</label>
+                        <input type="text" id="member-name" placeholder="Enter member's name">
+                    </div>
+                    <div class="form-group">
+                        <label for="member-role">Role:</label>
+                        <input type="text" id="member-role" placeholder="e.g., Coder, Planner">
+                    </div>
+                    <button id="add-member-btn">Add Member</button>
+                </div>
+
+                <div class="card">
+                    <h2>📝 Assign New Task</h2>
+                    <div class="form-group">
+                        <label for="task-assignee">Assign to:</label>
+                        <select id="task-assignee"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description">Task:</label>
+                        <input type="text" id="task-description" placeholder="Enter task description">
+                    </div>
+                    <button id="add-task-btn">Assign Task</button>
+                </div>
+            </section>
+
+            <section class="card-container">
+                <div class="card">
+                    <h2>Team Overview</h2>
+                    <div id="team-list"></div>
+                </div>
+                <div class="card">
+                    <h2>Task Assignments</h2>
+                    <div id="task-list"></div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Final Sprint Project</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

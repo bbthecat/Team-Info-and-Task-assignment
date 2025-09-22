@@ -5,70 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Team Task Manager</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>AI Team Task Manager</h1>
-            <p>A simple tool for managing your team and their assignments, powered by AI.</p>
+    <div class="app-container">
+        <header class="top-navigation">
+            <div class="logo-section">
+                <div class="logo-container">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h2>TaskFlow</h2>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Team</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Tasks</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </div>
+            </nav>
+            
+            <div class="user-section">
+                <div class="project-badge">
+                    <i class="fas fa-code"></i>
+                    <span>Final Sprint</span>
+                </div>
+            </div>
         </header>
 
-        <main>
-            <section class="card">
-                <h2>🤖 AI Task Generator</h2>
-                <div class="form-group">
-                    <label for="ai-task-input">Enter a high-level task:</label>
-                    <input type="text" id="ai-task-input" placeholder="e.g., Develop a new user authentication system">
-                </div>
-                <button id="generate-tasks-btn">Generate Sub-tasks</button>
-                <div id="ai-spinner" class="spinner" style="display: none;"></div>
-                <div id="ai-results">
-                    </div>
-            </section>
+        <main class="main-content">
+            <div class="page-header">
+                <h1>AI Team Task Manager</h1>
+                <p>Streamline your team workflow with AI-powered task management</p>
+            </div>
 
-            <section class="card-container">
-                <div class="card">
-                    <h2>👥 Add New Member</h2>
-                    <div class="form-group">
-                        <label for="member-name">Name:</label>
-                        <input type="text" id="member-name" placeholder="Enter member's name">
+            <div class="dashboard">
+                <section class="card ai-card">
+                    <div class="card-header">
+                        <i class="fas fa-robot"></i>
+                        <h2>AI Task Generator</h2>
                     </div>
-                    <div class="form-group">
-                        <label for="member-role">Role:</label>
-                        <input type="text" id="member-role" placeholder="e.g., Coder, Planner">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="ai-task-input">Enter a high-level task:</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lightbulb"></i>
+                                <input type="text" id="ai-task-input" placeholder="e.g., Develop a new user authentication system">
+                            </div>
+                        </div>
+                        <button id="generate-tasks-btn" class="btn btn-primary">
+                            <i class="fas fa-magic"></i> Generate Sub-tasks
+                        </button>
+                        <div id="ai-spinner" class="spinner" style="display: none;"></div>
+                        <div id="ai-results" class="results-container"></div>
                     </div>
-                    <button id="add-member-btn">Add Member</button>
+                </section>
+
+                <div class="card-grid">
+                    <section class="card">
+                        <div class="card-header">
+                            <i class="fas fa-user-plus"></i>
+                            <h2>Add New Member</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="member-name">Name:</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="member-name" placeholder="Enter member's name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="member-role">Role:</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                    <input type="text" id="member-role" placeholder="e.g., Coder, Planner">
+                                </div>
+                            </div>
+                            <button id="add-member-btn" class="btn btn-success">
+                                <i class="fas fa-plus"></i> Add Member
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <i class="fas fa-tasks"></i>
+                            <h2>Assign New Task</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="task-assignee">Assign to:</label>
+                                <div class="select-wrapper">
+                                    <select id="task-assignee"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-description">Task:</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-clipboard"></i>
+                                    <input type="text" id="task-description" placeholder="Enter task description">
+                                </div>
+                            </div>
+                            <button id="add-task-btn" class="btn btn-info">
+                                <i class="fas fa-plus-circle"></i> Assign Task
+                            </button>
+                        </div>
+                    </section>
                 </div>
 
-                <div class="card">
-                    <h2>📝 Assign New Task</h2>
-                    <div class="form-group">
-                        <label for="task-assignee">Assign to:</label>
-                        <select id="task-assignee"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="task-description">Task:</label>
-                        <input type="text" id="task-description" placeholder="Enter task description">
-                    </div>
-                    <button id="add-task-btn">Assign Task</button>
-                </div>
-            </section>
+                <div class="card-grid">
+                    <section class="card">
+                        <div class="card-header">
+                            <i class="fas fa-users"></i>
+                            <h2>Team Overview</h2>
+                        </div>
+                        <div class="card-body scrollable">
+                            <div id="team-list" class="data-list"></div>
+                        </div>
+                    </section>
 
-            <section class="card-container">
-                <div class="card">
-                    <h2>Team Overview</h2>
-                    <div id="team-list"></div>
+                    <section class="card">
+                        <div class="card-header">
+                            <i class="fas fa-clipboard-list"></i>
+                            <h2>Task Assignments</h2>
+                        </div>
+                        <div class="card-body scrollable">
+                            <div id="task-list" class="data-list"></div>
+                        </div>
+                    </section>
                 </div>
-                <div class="card">
-                    <h2>Task Assignments</h2>
-                    <div id="task-list"></div>
-                </div>
-            </section>
+            </div>
         </main>
-        
-        <footer>
-            <p>Final Sprint Project</p>
-        </footer>
     </div>
     <script src="app.js"></script>
 </body>
